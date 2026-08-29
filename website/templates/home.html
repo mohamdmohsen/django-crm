@@ -1,16 +1,59 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="col-md-6 offset-md-3">
+
 {% if user.is_authenticated %}
     
-    <h1>hello people</h1>
+<h1>Records</h1>
+
+<table class="table table-hover table table-striped table table-bordered  ">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">phone</th>
+      <th scope="col">adress</th>
+      <th scope="col">city</th>
+      <th scope="col">state</th>
+      <th scope="col">zipcode</th>
+      <th scope="col">created_at</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      {% if records  %}
+  
+        {% for record in records %}
+           <tr>         
+                <td><a href="{% url 'record' record.id %}">{{record.id}} </td></a>
+                <td>{{record.first_name}} </td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.email}}</td>
+                <td>{{record.phone}}</td>
+                <td>{{record.adress}}</td>
+                <td>{{record.city}}</td>
+                <td>{{record.state}}</td>
+                <td>{{record.zipcode}}</td>
+                <td>{{record.created_at}}</td>
+                <br> <br>
+            </tr>
+          {% endfor %}
+
+      {% endif %}
+    
+  </tbody>
+</table>
+
+
+
 
 {% else %}
     <h1>login</h1>
     <form action="{% url 'home' %}" method="post">
         {% csrf_token %}
         <br>   
-        <form>
+        
   <div class="mb-3">
     
     <input type="text" class="form-control" name="username" , placeholder="User name" required>
@@ -26,7 +69,7 @@
     </form>
 
 
- {% endif %}   
- </div>
+ {% endif %}
+ 
 
 {% endblock  %}

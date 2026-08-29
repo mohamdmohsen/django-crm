@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="col-mb-6 offset-md-3">
+<h1>Add Record</h1>
+<form action="{% url 'add_record' %}" method="post">
+    {% csrf_token %}
+    
+    {{form.as_p}}
+
+
+<br>
+  <a href="{% url 'home'  %}" class="btn btn-primary">Back</a>
+  <button type="submit" class="btn btn-primary">Add Record</button>
+  
+</div>
+</form>
+
+
+
+
+{% endblock %}

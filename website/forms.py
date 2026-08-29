@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 from django import forms 
+from.models import Record
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class': "form-control", "placeholder": "email address"}))
@@ -13,7 +14,7 @@ class SignUpForm(UserCreationForm):
 
 
 
-        def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
             super(SignUpForm, self).__init__(*args, **kwargs)
 
             self.fields['username'].widget.attrs['class'] = 'form-control'
@@ -30,3 +31,21 @@ class SignUpForm(UserCreationForm):
             self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
             self.fields['password2'].label = ''
             self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
+
+
+# create add_record Form
+
+class AddRecordForm(forms.ModelForm):
+     first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
+     last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
+     email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email ", "class":"form-control"}), label="")
+     phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Phone ", "class":"form-control"}), label="")
+     adress = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"address", "class":"form-control"}), label="")
+     city = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="")
+     state = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
+     zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Zipcode", "class":"form-control"}), label="")
+    
+     class Meta:
+          model = Record
+          fields = '__all__'
+     
