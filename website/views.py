@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def home(request):
-    records = Record.objects.all 
+    records = Record.objects.all()
 
     if request.method == 'POST':
         username = request.POST['username']
