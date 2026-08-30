@@ -4,7 +4,7 @@ connection = psycopg2.connect(
     dbname="mycrm",
     host="localhost",
     user="postgres",
-    password="12345",
+    
     port="5432"
 )
 
