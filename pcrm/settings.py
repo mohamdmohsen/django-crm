@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-key-for-local-only")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pcrm.settings')
+
 ALLOWED_HOSTS = [".vercel.app", "localhost", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app"]
 
