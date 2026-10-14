@@ -31,11 +31,8 @@ SECRET_KEY = 'django-insecure-i38v2u%ppx970bco=hq0=t4mx48@qy!5d+@-4jin)u*as3soem
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 
-ALLOWED_HOSTS = []
-host = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-if host:
-    ALLOWED_HOSTS.append(host)
-    CSRF_TRUSTED_ORIGINS = [f"https://{host}"]
+ALLOWED_HOSTS = [".vercel.app", "localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app"]
 
 
 # Application definition
